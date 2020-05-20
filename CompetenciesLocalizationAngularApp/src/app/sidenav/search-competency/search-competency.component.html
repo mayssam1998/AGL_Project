@@ -1,0 +1,17 @@
+<form class="form" #form1 (ngSubmit)="FillMap()" [formGroup]="SearchForm" autocomplete="off" >
+  <mat-form-field class="searchWidth" appearance="fill">
+    <mat-label>Search...</mat-label>
+    <input #competency matInput formControlName="competency" placeholder="Enter your competency" type="text" [matAutocomplete]="skill">
+    <mat-autocomplete #skill="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option?.description">
+        {{option?.description}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <button mat-stroked-button type="submit" class="SubmitButton"  [disabled]="!disableBtnSearch">
+    <img src="../../../assets/Images/Search.png" alt="Search" width="30px">
+  </button>
+</form>
+  <agm-map [latitude]="this.latitude" [longitude]="this.longitude" >
+    <agm-marker [latitude]="location.centroid[1]" [longitude]="location.centroid[0]" *ngFor="let location of MapLocations" (markerClick)="showDialogForMoreInfo(location)"></agm-marker>
+  </agm-map>

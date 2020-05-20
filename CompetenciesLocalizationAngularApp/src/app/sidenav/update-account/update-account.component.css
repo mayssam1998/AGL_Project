@@ -1,0 +1,42 @@
+.form {
+  width: 80%;
+  margin: 20px auto 50px auto;
+}
+.full-width {
+  width: 100%;
+}
+.SubmitButton{
+  margin-top: 20px;
+  width: 100%;
+}
+.mat-stroked-button{
+  background-color: rgba(0,0,0,.04);
+  border: none;
+  color: #606f7b;
+}
+.mat-stroked-button:hover{
+  border-bottom: 1px solid #606f7b;
+}
+.skillInputWidth{
+  width: 40% !important;
+  margin-right: 5% !important;
+}
+
+.mat-toolbar{
+  background: rgba(0,0,0,.04) !important;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  width: fit-content;
+  height: auto;
+  color: #606f7b;
+  display: inline-block;
+  margin-right: 5px;
+}
+.deleteSkillButton{
+  border: none;
+}
+
+.deleteSkillButton:hover{
+  color: chocolate;
+}

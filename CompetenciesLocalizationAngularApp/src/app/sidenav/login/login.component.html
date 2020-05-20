@@ -1,0 +1,11 @@
+<form class="form" #form1 (ngSubmit)="LoginToAccount()" [formGroup]="LoginAccountForm" autocomplete="off" >
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Email</mat-label>
+    <input #email matInput formControlName="email" placeholder="email" type="email">
+  </mat-form-field>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Password</mat-label>
+    <input #password matInput formControlName="password" placeholder="password" type="text" >
+  </mat-form-field>
+  <button mat-stroked-button type="submit" class="SubmitButton" [disabled]="!disableBtn">Login</button>
+</form>

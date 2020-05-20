@@ -1,0 +1,17 @@
+<div mat-dialog-content>
+  <p>{{data.message}}</p>
+</div>
+
+<div mat-dialog-actions *ngIf="this.data.type.match('AccountFor')">
+  <button mat-button (click)="onStudentClick()">Student</button>
+  <button mat-button (click)="onUniversityClick()">University</button>
+</div>
+
+<div mat-dialog-actions *ngIf="this.data.type.match('confirm')">
+  <button mat-button (click)="onDismiss()">No</button>
+  <button mat-raised-button color="primary" (click)="onConfirm()">Yes</button>
+</div>
+
+<div mat-dialog-actions *ngIf="this.data.type.match('message')">
+  <button mat-button (click)="close()" cdkFocusInitial>OK</button>
+</div>

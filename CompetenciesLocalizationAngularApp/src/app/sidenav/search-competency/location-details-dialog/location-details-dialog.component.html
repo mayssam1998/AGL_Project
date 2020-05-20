@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>{{data.name}}</h2>
+<mat-dialog-content class="mat-typography">
+  <div class="rowStyle">
+      <mat-panel-title> Country:  </mat-panel-title>
+      <mat-panel-description> {{data.country_name}} </mat-panel-description>
+  </div>
+  <div class="rowStyle">
+    <mat-panel-title> Gouvernat:  </mat-panel-title>
+    <mat-panel-description> {{data.gouvernat_name}} </mat-panel-description>
+  </div>
+  <div class="rowStyle">
+    <mat-panel-title> Longitude:  </mat-panel-title>
+    <mat-panel-description> {{data.centroid[0]}} </mat-panel-description>
+  </div>
+  <div class="rowStyle">
+    <mat-panel-title> Latitude:  </mat-panel-title>
+    <mat-panel-description> {{data.centroid[1]}} </mat-panel-description>
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Close</button>
+</mat-dialog-actions>

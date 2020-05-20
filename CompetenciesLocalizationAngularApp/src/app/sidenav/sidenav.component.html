@@ -1,0 +1,33 @@
+<mat-toolbar class="header">
+    <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    <div class="Logo">
+      <img src="../../assets/Images/AppLogo.png" alt="Logo" class="LogoImg" >
+      <p class="LogoText">Competency Search</p>
+    </div>
+  <div>
+    <button mat-button *ngIf="!this.accountService.LoggedInAccount" routerLink="Login" > Sign In</button>
+    <button mat-button *ngIf="this.accountService.LoggedInAccount" (click)="SignOut()">Sign out</button>
+  </div>
+</mat-toolbar>
+<mat-sidenav-container (backdropClick)="sidenav.close()">
+  <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'push'" [(opened)]="opened" [fixedInViewport]="true" (keydown.escape)="sidenav.close()">
+    <mat-nav-list>
+      <a mat-list-item routerLink="Search">
+        Search
+      </a>
+      <a mat-list-item routerLink="Register">
+        Register
+      </a>
+      <a mat-list-item routerLink="Login">
+        Login
+      </a>
+      <a mat-list-item routerLink="UpdateAccount">
+        Update Account
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content >
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

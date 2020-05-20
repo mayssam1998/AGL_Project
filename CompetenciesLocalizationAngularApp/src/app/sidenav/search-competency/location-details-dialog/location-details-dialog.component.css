@@ -1,0 +1,7 @@
+.rowStyle{
+  font-size: 18px;
+  margin: 20px;
+}
+.mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}

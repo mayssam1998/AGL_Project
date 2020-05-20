@@ -1,0 +1,33 @@
+.header{
+  background-color: rgba(0,0,0,.04);
+  color: #606f7b;
+}
+mat-sidenav{
+  background-color: #e8eaed !important;
+  top: 56px !important;
+}
+a:hover{
+  background-color: rgba(0,0,0,.04) !important;
+}
+mat-icon{
+  cursor: pointer;
+  font-weight: bold;
+}
+mat-sidenav-content{
+  height: 94vh;
+}
+
+.Logo{
+  text-align: center;
+  margin: auto;
+ }
+.LogoText{
+  margin: 0;
+  font-size: medium;
+  font-style: italic;
+}
+.LogoImg{
+  width: 20px;
+  height: 20px;
+  opacity: 0.6;
+}

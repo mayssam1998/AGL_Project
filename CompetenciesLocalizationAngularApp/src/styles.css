@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+  margin: 0;
+  background-color: #f4f5f6 !important;
+  font-family: Roboto, Arial, sans-serif;
+  color: #606f7b;
+  overflow: hidden;
+}
+html, body { height: 100%; }
+.mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background{
+  background-color: #606f7b !important ;
+}
+.mat-checkbox.mat-accent  .mat-pseudo-checkbox-checked{
+  background-color: #606f7b !important ;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline-thick{
+  color: #606f7b !important;
+}
+.mat-input-element{
+  caret-color: #606f7b !important;
+}
+.mat-form-field-infix{
+  width: 100% !important;
+}
+
+@media (max-width: 599px) {
+  .mat-toolbar-row, .mat-toolbar-single-row{
+    height: 65px !important;
+  }
+}
+
+.mat-autocomplete-panel.mat-autocomplete-visible {
+  max-height: 200px !important;
+}

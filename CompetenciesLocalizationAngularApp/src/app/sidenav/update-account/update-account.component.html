@@ -1,0 +1,112 @@
+<div *ngIf="this.accountService.studentOrUniversityLoggedIn && this.accountService.LoggedInAccount">
+  <form class="form" #form1 (ngSubmit)="SubmitAccount()" [formGroup]="StudentAccountForm" autocomplete="off" *ngIf="this.accountService.studentOrUniversityLoggedIn.match('student')">
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input #first_name matInput formControlName="first_name" placeholder="first_name" type="text">
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input #last_name matInput formControlName="last_name" placeholder="last_name" type="text">
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Date Of Birth</mat-label>
+      <input matInput formControlName="date_of_birth" [matDatepicker]="BirthdayDatePicker" >
+      <mat-datepicker-toggle matSuffix [for]="BirthdayDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #BirthdayDatePicker startView="year"></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>City</mat-label>
+      <input #city_name matInput formControlName="city_name" placeholder="city_name" type="text"  [matAutocomplete]="auto_city">
+      <mat-autocomplete #auto_city="matAutocomplete">
+        <mat-option *ngFor="let option of filteredCitiesOptions | async" [value]="option?.name">
+          {{option?.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>University Name</mat-label>
+      <input #university_name matInput formControlName="university_name" placeholder="university_name" type="text" [matAutocomplete]="auto_uni">
+      <mat-autocomplete #auto_uni="matAutocomplete">
+        <mat-option *ngFor="let option of filteredUniversitiesOptions | async" [value]="option?.name">
+          {{option?.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field class="skillInputWidth" >
+      <input type="text"
+             placeholder="Enter your skills"
+             aria-label="Number"
+             matInput
+             [formControl]="SkillControl"
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option?.description">
+          {{option?.description}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field class="skillInputWidth">
+      <mat-label>Proficiency</mat-label>
+      <mat-select [formControl]="selectedValue" name="proficiency">
+        <mat-option *ngFor="let proficiency of proficiencies" [value]="proficiency.value">
+          {{proficiency.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button type="button" mat-stroked-button style="width: 10% !important;" (click)="AddNewSkill()">Add</button>
+    <mat-toolbar *ngFor="let skill of this.StudentAccountForm.controls['skills'].value">
+      {{skill.description}} | {{skill.proficiency}}
+      <button type="button" class="deleteSkillButton" (click)="deleteSkill(skill)"> &#10006;</button>
+    </mat-toolbar>
+
+
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input #email matInput formControlName="email" placeholder="email" type="email">
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input #password matInput formControlName="password" placeholder="password" type="text" >
+    </mat-form-field>
+    <button mat-stroked-button type="submit" class="SubmitButton" [disabled]="!disableBtnStudent">Submit</button>
+  </form>
+
+
+  <!-- University Form -->
+  <form class="form" #form2 (ngSubmit)="SubmitAccount()" [formGroup]="UniversityAccountForm" autocomplete="off" *ngIf="this.accountService.studentOrUniversityLoggedIn.match('university')" >
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Name</mat-label>
+      <input #name matInput formControlName="name" placeholder="name" type="text">
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Telephone Number</mat-label>
+      <input #telephone_number matInput formControlName="telephone_number" placeholder="telephone_number" type="number">
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>City</mat-label>
+      <input #city_name matInput formControlName="city_name" placeholder="city_name" type="text" [matAutocomplete]="auto_Uni_city">
+      <mat-autocomplete #auto_Uni_city="matAutocomplete">
+        <mat-option *ngFor="let option of filteredCitiesOptionsForUni | async" [value]="option?.name">
+          {{option?.name}}
+        </mat-option>
+      </mat-autocomplete>
+
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Website</mat-label>
+      <input #website matInput formControlName="website" placeholder="website" type="text">
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input #email matInput formControlName="email" placeholder="email" type="email">
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input #password matInput formControlName="password" placeholder="password" type="text" [pattern]="this.PasswordPattern">
+    </mat-form-field>
+    <button mat-stroked-button type="submit" class="SubmitButton" [disabled]="!disableBtnUniversity" >Submit</button>
+  </form>
+</div>
